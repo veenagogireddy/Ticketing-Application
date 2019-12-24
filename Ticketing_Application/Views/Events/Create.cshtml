@@ -1,0 +1,106 @@
+﻿@model _665Project_ASP.Models.Events
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Event</h1>
+
+@if (ViewData["message"] != null)
+{
+    <div class="alert alert-danger">@ViewData["message"]</div>
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EventName" class="control-label">Event Name</label>
+                <input asp-for="EventName" class="form-control" />
+                <span asp-validation-for="EventName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventVenue" class="control-label">Venue</label>
+                <input asp-for="EventVenue" class="form-control" />
+                <span asp-validation-for="EventVenue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventDuration" class="control-label">Duration</label>
+                <input asp-for="EventDuration" class="form-control" />
+                <span asp-validation-for="EventDuration" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EventDate" class="control-label">Date</label>
+                <input type="date" asp-for="EventDate" class="form-control" />
+                <span asp-validation-for="EventDate" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="EventStatus" class="control-label"></label>
+                <input asp-for="EventStatus" class="form-control" value="W" />
+                <span asp-validation-for="EventStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="EventOrganizerId" class="control-label"></label>
+                <select asp-for="EventOrganizerId" class="form-control" asp-items="ViewBag.EventOrganizerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventType" class="control-label">Event Type</label>
+                <input asp-for="EventType" class="form-control" />
+                <span asp-validation-for="EventType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventCity" class="control-label">City</label>
+                @*<input asp-for="EventCity" class="form-control" />*@
+                <select asp-for="EventCity" class="form-control" name="EventCity" id="EventCity">
+                    <option value="">select a city</option>
+                    <option value="denver">Denver</option>
+                    <option value="colosprings">Colorado Springs</option>
+                    <option value="fortCollins">FortCollins</option>
+                    <option value="lakewood">Lakewood</option>
+                    <option value="thorton">Thorton</option>
+                    <option value="westminster">Westminster</option>
+                    <option value="pueblo">Pueblo</option>
+                    <option value="Centennial">Centennial</option>
+                    <option value="boulder">Boulder</option>
+                    <option value="highlandsranch">Highlands Ranch</option>
+                    <option value="greeley">Greeley</option>
+                    <option value="longmont">longmont</option>
+                    <option value="loveland">loveland</option>
+                    <option value="Broomfield">Broomfield</option>
+                    <option value="grand Junction">Grand Junction</option>
+                    <option value="castlerock">Castle Rock</option>
+                    <option value="commercecity">Commerce City</option>
+                    <option value="parker">Parker</option>
+                </select>
+                <span asp-validation-for="EventCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventZip" class="control-label">Zip</label>
+                <input type="text" asp-for="EventZip" class="form-control" />
+                <span asp-validation-for="EventZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventDescription" class="control-label">Description</label>
+                <textarea asp-for="EventDescription" class="form-control"></textarea>
+                <span asp-validation-for="EventDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventStartTime" class="control-label">Event Start Time</label>
+                <input asp-for="EventStartTime" class="form-control" />
+                <span asp-validation-for="EventStartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" /> &nbsp; | &nbsp;
+                <a asp-action="Index" asp-controller="Events" class="btn btn-primary">Back to Manage Events</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

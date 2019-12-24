@@ -1,0 +1,54 @@
+﻿@model IEnumerable<_665Project_ASP.Models.Events>
+
+@{
+    ViewData["Title"] = "ApproveDenyEvents";
+}
+
+<h4>Click on the event name to view the event details</h4>
+<br />
+
+@if (ViewData["message"] != null)
+{
+    <div class="alert alert-danger">@ViewData["message"]</div>
+}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th class="col text-center">
+                Event Name
+            </th> 
+            <th colspan="2" class="col text-center">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+       
+       
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td class="col text-center">
+                    <a asp-action="EventDetails" asp-route-id="@item.EventId">@item.EventName</a>
+                </td>
+                <td class="col text-center">
+                    <a asp-action="ApproveEvent" asp-route-id="@item.EventId" class="btn btn-success">Approve Event</a>
+                </td>
+                <td class="col text-center">
+                    <a asp-action="DenyEvent" asp-route-id="@item.EventId" class="btn btn-danger">Deny Event</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Search" asp-controller="Event" class="btn btn-primary">Back to Event Search</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

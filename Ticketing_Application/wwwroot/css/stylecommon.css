@@ -1,0 +1,269 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 10, 2019, 2:32:31 PM
+    Author     : akhilobb
+*/
+
+article, header, footer, figure, section, form
+{
+    display: block;
+}
+
+html
+{
+   background-color: rgb(0,0,0);
+   background-image: url('Colorado.jpg');
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+header 
+{
+    background-color: rgb(0, 0, 0);   
+}
+
+header a
+{
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-left: 0px;
+    text-decoration: none;
+    color: orangered;
+    font-size: 1000%;
+}
+
+header a img
+{
+    height: 150px;
+    margin-top: 15px;
+    margin-bottom: -10px;
+}
+
+header h2
+{
+    background-color: lightyellow;
+    text-align: center;
+    line-height: 1.4em;
+    color: green;         
+}
+
+body
+{
+    background-color: skyblue;
+    margin: 0px auto;
+    padding: 0px;
+    width: 98%;
+    max-width: 950px;
+    min-width: 250px;
+    
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 100%;
+    line-height: 1.5em;
+    position: relative;
+}
+
+body form {
+    margin-left: 200px;
+}
+
+body p{
+    margin-left: 200px;
+    margin-right: 20px;
+    text-align: justify;
+}
+
+table {
+   background: white;
+   border: 10px outset blue;
+   border-collapse: collapse;    
+   font-size: 0.75em;
+   width: 80%;
+   margin: auto;
+   margin-right: 20px;
+}
+
+table th, table td {
+   border: 1px solid gray;
+   padding: 5px;
+}
+
+table thead {
+   background: black;
+   color: white;
+}
+
+table tfoot {
+   background: black;
+   color: white;
+}
+
+table thead tr {
+   height: 30px;
+}
+
+table tbody tr {
+   height: 30px;
+}
+
+/*-------------------------Navigation List-------------------------*/
+nav
+{
+   width: 180px;
+   float: left;
+   margin-right: 10px;
+   margin-top: -36px;
+}
+
+nav ul
+{
+   background-color: rgb(200, 195, 114);
+   line-height: 2em;
+   list-style-type: none;
+   padding-left: 1.0em;
+}
+
+nav ul li:hover
+{
+   background-color: rgb(55, 102, 55);
+}
+
+nav ul li a
+{
+   color: white;
+   text-decoration: none;
+   display: block;
+}
+
+nav ul li {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+    font-size: 1.0em;
+}
+
+/*-------------------------Footer Design-------------------------*/
+.footer-basic-centered{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: center;
+	font: normal 18px sans-serif;
+	padding-bottom: 45px;
+}
+
+.footer-basic-centered p{
+    text-align: center;
+}
+
+.footer-basic-centered .footer-company-motto{
+	color:  #8d9093;
+	font-size: 24px;
+	margin: 0;
+}
+
+.footer-basic-centered .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	margin: 0;
+}
+
+.footer-basic-centered .footer-links{
+	list-style: none;
+	font-weight: bold;
+	color:  #ffffff;
+	padding: 35px 0 23px;
+	margin: 0;
+}
+
+.footer-basic-centered .footer-links a{
+	display:inline-block;
+	text-decoration: none;
+	color: inherit;
+}
+
+
+dl {
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+dt {
+    display: block;
+    margin: 0;
+    text-indent: 0;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(168, 168, 168, 1.00);
+    padding-bottom: 7px;
+    margin-bottom: 7px;
+}
+
+body dd {
+    display: block;
+    margin: 0 0 3% 3%;
+    text-indent: 0;
+    text-align: justify;
+}
+
+/*---------------------Form Designs--------------------*/
+input[type=text],[type=number],textarea {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input [type=date] {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.citySelect {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;    
+}
+
+input[type=hidden] {
+  width: 25%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+label.eventdate.popup {
+    display: inline-block !important;
+    position: absolute !important;
+    left: 570px !important;
+    top: 164px !important
+}

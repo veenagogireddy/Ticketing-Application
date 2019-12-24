@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Events>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Welcome to ColoTiX</h1>
+<br />
+@if (ViewData["message"] != null)
+{
+    <div class="alert alert-danger">@ViewData["message"]</div>
+}
+
+<form asp-action="Search" method="post">
+    <div class="form-actions no-color" />
+    <div class="form-group">
+        <h6>
+            Search Events By City
+            <select class="citySelect" name="searchCity" id="searchCity" value="@ViewData["CityFilter"]">
+                <option value="">select a city</option>
+                <option value="denver">Denver</option>
+                <option value="colosprings">Colorado Springs</option>
+                <option value="fortCollins">FortCollins</option>
+                <option value="lakewood">Lakewood</option>
+                <option value="thorton">Thorton</option>
+                <option value="westminster">Westminster</option>
+                <option value="pueblo">Pueblo</option>
+                <option value="Centennial">Centennial</option>
+                <option value="boulder">Boulder</option>
+                <option value="highlandsranch">Highlands Ranch</option>
+                <option value="greeley">Greeley</option>
+                <option value="longmont">longmont</option>
+                <option value="loveland">loveland</option>
+                <option value="Broomfield">Broomfield</option>
+                <option value="grand Junction">Grand Junction</option>
+                <option value="castlerock">Castle Rock</option>
+                <option value="commercecity">Commerce City</option>
+                <option value="parker">Parker</option>
+            </select>
+        </h6><br />
+
+        <h6>
+            Search by Event Date: <input type="date" name="searchEventDate" value="@ViewData["DateFilter"]" />
+        </h6><br />
+
+        <input type="submit" value="Search" class="btn btn-success" />
+        <a asp-action="Search">  Reset Search</a>
+
+    </div>
+</form>
+@if (Model != null)
+{
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+        <thead>
+            <tr>
+                <th>Event&nbsp;Name</th>
+                <th>Event Description</th>
+                <th>Event&nbsp;Venue</th>
+                <th>Event&nbsp;City</th>
+                <th>Event&nbsp;Time</th>
+                <th>Event&nbsp;Date</th>
+                <th>Event Duration</th>
+                <th>Postal&nbsp;code</th>
+                <th>Event&nbsp;Type</th>
+                @if (this.User.IsInRole("1"))
+                {
+
+                }
+                else
+                {
+                    <th>Interested?</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+
+                <tr>
+                    <td>@p.EventName</td>
+                    <td>@p.EventDescription</td>
+                    <td>@p.EventVenue</td>
+                    <td>@p.EventCity</td>
+                    <td>@p.EventStartTime</td>
+                    <td>@p.EventDate.ToShortDateString()</td>
+                    <td>@p.EventDuration</td>
+                    <td>@p.EventZip</td>
+                    <td>@p.EventType</td>
+
+                    @if (this.User.IsInRole("1") && this.User.Identity.IsAuthenticated)
+                    {
+
+                    }
+                    else if (!(this.User.Identity.IsAuthenticated))
+                    {
+                        <td><a asp-action="Login" asp-controller="Account" asp-route-id="@p.EventId" class="btn btn-primary">Purchase</a></td>
+                    }
+                    else
+                    {
+                        var parms = new Dictionary<string, string>
+                        {
+                            { "eventId", @p.EventId.ToString() },
+                            { "userId", @p.EventOrganizerId.ToString() }
+                        };
+
+                        <form asp-action="Create" asp-controller="PurchasedEvents" method="post" asp-all-route-data="parms">
+
+                            <td>
+                                <input type="submit" value="Purchase" class="btn btn-primary" />
+                            </td>
+                        </form>
+
+
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

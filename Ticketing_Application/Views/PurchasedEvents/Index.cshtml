@@ -1,0 +1,57 @@
+﻿@model IEnumerable<_665Project_ASP.Models.PurchasedEvents>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Below are your purchased events</h1>
+<br/>
+
+<table class="table table-sm table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Event Name
+            </th>
+            <th>
+                Event Venue
+            </th>
+            <th>Event Date</th>
+            <th>Event Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var date = item.Event.EventDate.ToShortDateString();
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event.EventVenue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event.EventStartTime)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<div>
+    <a asp-action="Search" asp-controller="Event" class="btn btn-primary">Back to Event Search</a>
+</div>
+@if (ViewData["message1"] != null)
+{
+    <div class="alert alert-danger">@ViewData["message1"]</div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

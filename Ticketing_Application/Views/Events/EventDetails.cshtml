@@ -1,0 +1,85 @@
+﻿@model _665Project_ASP.Models.Events
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Event Details</h1>
+
+<div>
+    @*<h4>Events</h4>*@
+    <br />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.EventName)*@
+            Event Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventName)
+        </dd>
+        <dt class="col-sm-2">
+            Event Venue
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventVenue)
+        </dd>
+        <dt class="col-sm-2">
+            Event Duration
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventDuration)
+        </dd>
+        <dt class="col-sm-2">
+            Event Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.EventDate.ToShortDateString()
+            @*@Html.DisplayFor(model => model.EventDate)*@
+        </dd>
+        <dt class="col-sm-2">
+            Event Status
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventStatus)
+        </dd>
+        <dt class="col-sm-2">
+            Event Type
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventType)
+        </dd>
+        <dt class="col-sm-2">
+            Event City
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventCity)
+        </dd>
+        <dt class="col-sm-2">
+            Event Zip
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventZip)
+        </dd>
+        <dt class="col-sm-2">
+            Event Description
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventDescription)
+        </dd>
+        <dt class="col-sm-2">
+            Event Start Time
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventStartTime)
+        </dd>
+        <dt class="col-sm-2">
+            Host Email ID
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventOrganizer.EmailId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="ApproveDenyEvents" class="btn btn-primary">Back to List</a>
+</div>

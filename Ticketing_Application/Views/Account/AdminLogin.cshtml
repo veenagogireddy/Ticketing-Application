@@ -1,0 +1,59 @@
+﻿@model AdminLoginInput
+
+@{
+    ViewData["Title"] = "AdminLogin";
+}
+
+<h1>Admin Login</h1>
+
+<hr />
+
+@* message for new user after he/she has successfully created an account*@
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">@TempData["success"]</div>
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AdminLogin" method="post">
+
+            @* Store the returnURL as a hidden field*@
+
+            <input type="hidden" asp-for="ReturnURL" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AdminId" class="control-label">User Email</label>
+                <input asp-for="AdminId" class="form-control" />
+                <span asp-validation-for="AdminId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label">Password</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" /> &nbsp; | &nbsp;
+                <a asp-controller="Account" asp-action="Login" class="btn btn-secondary">Back to User Login</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@*If credentials are invalid*@
+
+@if (ViewData["message"] != null)
+{
+    <div class="alert alert-danger">@ViewData["message"]</div>
+}
+
+@*If user is not yet authenticated*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
